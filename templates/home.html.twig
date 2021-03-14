@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div>
+        {{ render_esi(path('milestone_list')) }}
+    </div>
+
+    {{ form(milestoneForm) }}
+
+{% endblock %}

@@ -1,0 +1,7 @@
+{% if milestones is defined and milestones is not empty %}
+    <ol>
+        {% for milestone in milestones|sort((a, b) => a.date <=> b.date) %}
+            <li>{{ milestone.date|date('d-m-Y H:i:s') }} - {{ milestone.height.height }}cm</li>
+        {% endfor %}
+    </ol>
+{% endif %}
