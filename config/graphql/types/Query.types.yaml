@@ -1,0 +1,10 @@
+Query:
+  type: object
+  config:
+    fields:
+      milestone:
+        type: Milestone
+        args:
+          height:
+            type: Float
+        resolve: '@=resolver("App\\GraphQL\\Resolver\\MilestoneResolver::resolve", [args["height"]])'

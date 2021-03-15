@@ -1,0 +1,15 @@
+Milestone:
+  type: object
+  config:
+    resolveField: '@=resolver("App\\GraphQL\\Resolver\\MilestoneResolver", [info, value, args])'
+    fields:
+      height:
+        description: ""
+        type: Float
+#      id:
+#        description: ""
+#        type: String
+#      date:
+#        description: ""
+#        type: Datetime
+
