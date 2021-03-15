@@ -23,7 +23,8 @@
         "symfony/proxy-manager-bridge": "5.2.*",
         "symfony/requirements-checker": "^2.0",
         "symfony/twig-bundle": "5.2.*",
-        "symfony/yaml": "5.2.*"
+        "symfony/yaml": "5.2.*",
+        "ext-json": "*"
     },
     "config": {
         "optimize-autoloader": true,

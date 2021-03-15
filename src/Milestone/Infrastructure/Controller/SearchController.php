@@ -3,53 +3,46 @@ declare(strict_types=1);
 
 namespace App\Milestone\Infrastructure\Controller;
 
+use App\Milestone\Application\Search;
+use Elasticsearch\Client;
 use Elasticsearch\ClientBuilder;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class SearchController extends AbstractController
 {
-    /**
-     * @Route("/search", methods={"GET", "POST"}, name="search")
-     * @Template("search.html.twig")
-     */
-    public function __invoke(Request $request): array
+    private Search $search;
+
+    public function __construct()
     {
-        $hosts = [
-            'elasticsearch:9200',         // IP + Port
-        ];
+        $this->search = new Search(
+            ClientBuilder::create()->setHosts(['elasticsearch:9200'])->build()
+        );
+    }
 
-        $client = ClientBuilder::create()
-            ->setHosts($hosts)
-            ->build();
-
+    /**
+     * @Route("/search", methods={"GET"}, name="search")
+     */
+    public function __invoke(): JsonResponse
+    {
         $params = [
             'index' => 'testindex',
             'type' => 'test',
 //            'body' => [
 //                'query' => [
 //                    'match' => [
-//                        'lastname' => 'Barba'
+//                        'replaceKey' => 'replaceValue'
 //                    ]
 //                ]
 //            ]
         ];
 
-        $response = $client->search($params);
+        $response = new JsonResponse($this->search->search($params));
 
+        $response->setEncodingOptions($response->getEncodingOptions() | JSON_PRETTY_PRINT);
 
-        $userNames = array_map(function ($item) {
-            return $item['_source'];
-        }, $response['hits']['hits']);
-
-        echo '<h1>Results for Barba:</h1>';
-        foreach ($userNames as $userName) {
-            echo '<li>'. implode(' ', $userName) . '</li>';
-        }
-
-        echo '<h2>Entirely response:</h2> <pre>', print_r($response, true), '</pre>';
-
+        return $response;
     }
 }
