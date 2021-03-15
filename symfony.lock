@@ -105,6 +105,27 @@
     "nikic/php-parser": {
         "version": "v4.10.4"
     },
+    "overblog/graphiql-bundle": {
+        "version": "0.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "0.1",
+            "ref": "fe8d172f2480efc598f5a8be0e732656d3594cec"
+        },
+        "files": [
+            "config/routes/dev/graphiql.yaml"
+        ]
+    },
+    "overblog/graphql-bundle": {
+        "version": "0.12",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "0.12",
+            "ref": "c01dcfb85a6e93f1a43ef36151fcff11cf17f791"
+        }
+    },
     "psr/cache": {
         "version": "1.0.1"
     },
@@ -194,6 +215,9 @@
     },
     "symfony/event-dispatcher-contracts": {
         "version": "v2.2.0"
+    },
+    "symfony/expression-language": {
+        "version": "v5.2.4"
     },
     "symfony/filesystem": {
         "version": "v5.2.3"
@@ -346,6 +370,9 @@
             "config/routes.yaml"
         ]
     },
+    "symfony/serializer": {
+        "version": "v5.2.4"
+    },
     "symfony/service-contracts": {
         "version": "v2.2.0"
     },
@@ -400,5 +427,8 @@
     },
     "twig/twig": {
         "version": "v3.3.0"
+    },
+    "webonyx/graphql-php": {
+        "version": "v0.13.9"
     }
 }
